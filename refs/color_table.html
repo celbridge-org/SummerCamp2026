@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>p5.js Named Colors</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    p.intro {
+      text-align: center;
+      color: #555;
+    }
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .swatch {
+      border-radius: 8px;
+      padding: 18px 10px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    .swatch .name {
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .swatch .hex {
+      font-size: 12px;
+      opacity: 0.85;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>p5.js Named Colors</h1>
+  <p class="intro">All the CSS color names you can use in p5.js and p5play, e.g. <code>sprite.color = 'hotpink';</code></p>
+  <div id="grid"></div>
+
+  <script>
+    const colorNames = [
+      "aliceblue", "antiquewhite", "aqua", "aquamarine", "azure",
+      "beige", "bisque", "black", "blanchedalmond", "blue",
+      "blueviolet", "brown", "burlywood", "cadetblue", "chartreuse",
+      "chocolate", "coral", "cornflowerblue", "cornsilk", "crimson",
+      "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray",
+      "darkgreen", "darkkhaki", "darkmagenta", "darkolivegreen", "darkorange",
+      "darkorchid", "darkred", "darksalmon", "darkseagreen", "darkslateblue",
+      "darkslategray", "darkturquoise", "darkviolet", "deeppink", "deepskyblue",
+      "dimgray", "dodgerblue", "firebrick", "floralwhite", "forestgreen",
+      "fuchsia", "gainsboro", "ghostwhite", "gold", "goldenrod",
+      "gray", "green", "greenyellow", "honeydew", "hotpink",
+      "indianred", "indigo", "ivory", "khaki", "lavender",
+      "lavenderblush", "lawngreen", "lemonchiffon", "lightblue", "lightcoral",
+      "lightcyan", "lightgoldenrodyellow", "lightgray", "lightgreen", "lightpink",
+      "lightsalmon", "lightseagreen", "lightskyblue", "lightslategray", "lightsteelblue",
+      "lightyellow", "lime", "limegreen", "linen", "magenta",
+      "maroon", "mediumaquamarine", "mediumblue", "mediumorchid", "mediumpurple",
+      "mediumseagreen", "mediumslateblue", "mediumspringgreen", "mediumturquoise", "mediumvioletred",
+      "midnightblue", "mintcream", "mistyrose", "moccasin", "navajowhite",
+      "navy", "oldlace", "olive", "olivedrab", "orange",
+      "orangered", "orchid", "palegoldenrod", "palegreen", "paleturquoise",
+      "palevioletred", "papayawhip", "peachpuff", "peru", "pink",
+      "plum", "powderblue", "purple", "rebeccapurple", "red",
+      "rosybrown", "royalblue", "saddlebrown", "salmon", "sandybrown",
+      "seagreen", "seashell", "sienna", "silver", "skyblue",
+      "slateblue", "slategray", "snow", "springgreen", "steelblue",
+      "tan", "teal", "thistle", "tomato", "turquoise",
+      "violet", "wheat", "white", "whitesmoke", "yellow",
+      "yellowgreen"
+    ];
+
+    // Use a canvas to convert a color name to its RGB values
+    const ctx = document.createElement("canvas").getContext("2d");
+    function nameToRgb(name) {
+      ctx.fillStyle = name;
+      const hex = ctx.fillStyle; // browser normalizes to #rrggbb
+      return {
+        hex: hex.toUpperCase(),
+        r: parseInt(hex.substr(1, 2), 16),
+        g: parseInt(hex.substr(3, 2), 16),
+        b: parseInt(hex.substr(5, 2), 16)
+      };
+    }
+
+    // Pick black or white text, whichever contrasts better (WCAG luminance)
+    function textColorFor(r, g, b) {
+      const lum = [r, g, b]
+        .map(v => {
+          v /= 255;
+          return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+        })
+        .reduce((acc, v, i) => acc + v * [0.2126, 0.7152, 0.0722][i], 0);
+      return lum > 0.179 ? "black" : "white";
+    }
+
+    const grid = document.getElementById("grid");
+    for (const name of colorNames) {
+      const { hex, r, g, b } = nameToRgb(name);
+      const swatch = document.createElement("div");
+      swatch.className = "swatch";
+      swatch.style.backgroundColor = name;
+      swatch.style.color = textColorFor(r, g, b);
+      swatch.innerHTML = `<div class="name">${name}</div><div class="hex">${hex}</div>`;
+      grid.appendChild(swatch);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+[celbridge]
+celbridge-version = "0.3.0"
+
+[project]
+name = "empty"
+version = "0.1.0"
+requires-python = "3.13"
+dependencies = []
+
+# Includes the files and folders the ignore-file allows, plus 'add', minus 'remove'.
+# 'lock' freezes resources so they can't be edited, moved, or deleted.
+# File patterns are globs, e.g. "Python/.venv/**"
+[resources]
+ignore-file = ".gitignore"
+add = []
+remove = [".gitignore"]
+lock = []#
+
+[[shortcut]]
+name = "web-server"
+script = '''
+run -m http.server 8000 --directory _matt_new
+'''
