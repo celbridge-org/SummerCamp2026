@@ -14,10 +14,4 @@ dependencies = []
 ignore-file = ".gitignore"
 add = []
 remove = [".gitignore"]
-lock = []#
-
-[[shortcut]]
-name = "web-server"
-script = '''
-run -m http.server 8000 --directory _matt_new
-'''
+lock = []

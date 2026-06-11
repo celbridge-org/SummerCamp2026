@@ -7,7 +7,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  new Canvas(400, 400);
   monster = new Sprite()
   monster.x = 200;
   monster.y = 200;

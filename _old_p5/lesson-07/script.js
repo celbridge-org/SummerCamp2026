@@ -1,7 +1,7 @@
 
 
 function setup() {
-  createCanvas(400, 400);
+  new Canvas(400, 400);
 }
 
 function drawStars(){

@@ -7,7 +7,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1200, 800);
+  new Canvas(1200, 800);
   
   earth = new Sprite(600, 400, 100);
   earth.img = earthImg;
