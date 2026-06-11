@@ -28,3 +28,10 @@ new Sprite(x, y, d, 'kinematic');
 Image or Animation
 new Sprite(shipImg, x, y);
 
+
+--
+
+more samples (old ones) at:
+https://github.com/molleindustria/p5.play/
+
+
