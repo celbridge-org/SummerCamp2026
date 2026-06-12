@@ -1,27 +1,14 @@
-
-
-let sprite;
+let sprite1;
 
 function setup() {
-  new Canvas(400, 400);
-  sprite = new Sprite()
-  sprite.x = 200;
-  sprite.y = 200;
-  sprite.w = 40;
-  sprite.h = 40;
-  sprite.color = 'pink';
-  sprite.stroke = 'red';
-  sprite.rotationSpeed = 1;
+  new Canvas(600, 400);
 
-  
-  sprite.vel.y = -1;
+  sprite1 = new Sprite(200, 200, 40, 40);
+  sprite1.color = 'pink';
+  sprite1.stroke = 'red';
 }
 
 function draw() { 
   background('grey');
 }
-
-
-
-
 

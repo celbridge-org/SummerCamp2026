@@ -19,7 +19,7 @@ function setup() {
   // four static walls, same geometry as the original
   walls = new Group();
   walls.collider = 'static';
-  walls.visible = false; // they sit just off-canvas anyway
+  walls.visible = true; // they sit just off-canvas anyway
   new walls.Sprite(canvas.w / 2, -WALL_THICKNESS / 2, canvas.w + WALL_THICKNESS * 2, WALL_THICKNESS);
   new walls.Sprite(canvas.w / 2, canvas.h + WALL_THICKNESS / 2, canvas.w + WALL_THICKNESS * 2, WALL_THICKNESS);
   new walls.Sprite(-WALL_THICKNESS / 2, canvas.h / 2, WALL_THICKNESS, canvas.h);
@@ -58,7 +58,7 @@ function update() {
   paddle.moveTowards(targetX, paddle.y, 1);
 
   // launch
-  if (mouse.presses() && ball.speed == 0) {
+  if (mouse.presses() && ball.speed == 0) {LowVoice.wav
     ball.speed = MAX_SPEED;
     ball.direction = random(80, 100); // roughly downward
   }
@@ -76,8 +76,38 @@ function update() {
 
 function draw() {
   background(247, 134, 131);
+
+  // controls hint at the top
+  push();
+  fill('white');
+  textAlign(CENTER, TOP);
+  textSize(16);
+  text('Mouse click to start  -  move mouse left/right to move the paddle', canvas.w / 2, 10);
+  pop();
 }
 
 function brickHit(ball, brick) {
   brick.delete();
+  playBlip();
+}
+
+// short synthesized "blip" via the Web Audio API (no sound file needed)
+let audioCtx;
+function playBlip() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+
+  let osc = audioCtx.createOscillator();
+  let gain = audioCtx.createGain();
+  osc.type = 'square';
+  osc.frequency.value = 440;
+
+  let now = audioCtx.currentTime;
+  gain.gain.setValueAtTime(0.2, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1); // quick fade out
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.1);
 }

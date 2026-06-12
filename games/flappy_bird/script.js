@@ -12,6 +12,10 @@ let score, surviveFrames;
 let birdImg, pipeImg, groundImg, bgImg;
 
 function preload() {
+  // q5 defaults to drawing images at 0.5 scale (it assumes 2x retina assets);
+  // p5 draws at native size, so reset to 1 before loading to match the old look
+  if (typeof defaultImageScale === 'function') defaultImageScale(1);
+
   birdImg = loadImage('images/flappy_bird.png');
   pipeImg = loadImage('images/flappy_pipe.png');
   groundImg = loadImage('images/flappy_ground.png');

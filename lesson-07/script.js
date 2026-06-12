@@ -1,24 +1,22 @@
-
+let sprite1;
 
 function setup() {
-  new Canvas(400, 400);
-}
+  new Canvas(600, 400);
 
-function drawStars(){
-  randomSeed(99);
-  for (var count = 0; count < 50; count++) {
-    var x = random(width);
-    var y = random(height);
-    var size = random(1, 4);
-    fill(255);
-    ellipse(x, y, size, size);
-  }
+  sprite1 = new Sprite(200, 200, 40);
+  sprite1.colour = 'pink';
+  sprite1.stroke = 'red';
+
+  world.gravity.y = 10;
 }
 
 function draw() { 
-  background('black');
-  drawStars()
+  background('grey');
 }
+
+
+
+
 
 
 
