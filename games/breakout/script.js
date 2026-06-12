@@ -58,7 +58,7 @@ function update() {
   paddle.moveTowards(targetX, paddle.y, 1);
 
   // launch
-  if (mouse.presses() && ball.speed == 0) {LowVoice.wav
+  if (mouse.presses() && ball.speed == 0) {
     ball.speed = MAX_SPEED;
     ball.direction = random(80, 100); // roughly downward
   }
