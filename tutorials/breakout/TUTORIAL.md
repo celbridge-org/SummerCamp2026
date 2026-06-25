@@ -1,6 +1,6 @@
-# Laser Breakout
+# Breakout
 
-Game-specific tutorial for **Laser Breakout**, a working breakout clone (`index.html`,
+Game-specific tutorial for **Breakout**, a working breakout clone (`index.html`,
 `script.js`, `DESIGN.md`). Run it through the general playbook in `tutorials/run_tutorial.md`
 — that covers tone, the edit → reload → see-it loop, the DESIGN.md-as-spec discipline, and
 how to steer the session. This file carries the breakout specifics.
@@ -14,8 +14,7 @@ Skim `script.js` and `DESIGN.md` first so you can speak to the actual code:
   `bricks` (one colour per row), and off-screen `walls`.
 - `ball.collides(bricks, brickHit)` deletes a brick and plays a short synthesized blip.
 
-Deliberately *missing*: the lasers the game is named after. That gap is the hook, and the
-recommended first feature.
+Deliberately *missing*: lasers — the recommended first feature, and the hook.
 
 ## The quick win: laser beams
 

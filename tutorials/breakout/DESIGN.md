@@ -1,8 +1,8 @@
-# Laser Breakout — Game Design Document
+# Breakout — Game Design Document
 
-A breakout clone, set up as a starting point for you to build on. The name hints at
-the obvious first feature: a paddle that can fire laser bolts. But the direction is
-yours — see TUTORIAL.md to get going.
+A breakout clone, set up as a starting point for you to build on. The suggested first
+feature is a paddle that can fire laser bolts, but the direction is yours — see TUTORIAL.md
+to get going.
 
 ## Core loop
 

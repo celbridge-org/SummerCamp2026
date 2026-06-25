@@ -16,7 +16,7 @@ Once they choose, read that game's `TUTORIAL.md` and follow it for the game-spec
 game's current state, the recommended first feature and its steps, the menu of next
 directions, and the reference implementation — applying the general guidance below throughout.
 
-(Currently `laser_breakout` is the only game, but more will be added — always discover the
+(Currently `breakout` is the only game, but more will be added — always discover the
 list, don't hard-code it.)
 
 ## Audience and tone
