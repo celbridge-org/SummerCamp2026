@@ -52,6 +52,19 @@ Over the first few turns, get a feel for:
 
 Don't rush to lock this down. A natural back-and-forth beats an interrogation.
 
+**Set two expectations on turn one.** New users won't assume either of these, so say both
+plainly near the start:
+
+- *You drive the reloads.* Say something like: "Whenever I make a change I reload it for you
+  — so 'try it' just means go play, you never need to reload yourself." Without this, "try
+  it" is ambiguous and users go hunting for a reload button. If they'd rather reload
+  themselves, that's fine — tell them they can drive the reloads and just let you know, then
+  "try it" becomes their cue to reload and play.
+- *This isn't on rails.* Drop a one-line nudge that they can steer: "Ask me how anything
+  works, or throw a wild idea at me anytime." Many users arrive from rigid step-by-step
+  tutorials and don't realise they can ask "why" or go off-script. Keep it to a single nudge
+  — the structured lasers flow is still the default spine for most users.
+
 ## Set up the workspace: game and design doc side by side
 
 It helps to have the game and `DESIGN.md` visible at once — design on one side, running
@@ -96,13 +109,21 @@ item from "Ideas to explore" into a proper section and tick it off in Status).
 
 ## How to work
 
-- **Keep the design doc in sync.** Reflect each change in `DESIGN.md` first (or alongside),
-  then apply it to `script.js`. The doc and the code should never drift apart.
+- **Keep `DESIGN.md` a reproducible spec, and write it first.** Apply each design change to
+  `DESIGN.md` *before* you edit `script.js`, so the two never drift. The doc is a spec, not a
+  status checklist — ticking a box is not enough. Each mechanic needs a short "how it works"
+  entry that someone could rebuild equivalent behaviour from, including the player-facing
+  tuning numbers (oxygen drain/refill rates, spike damage, boss HP and any baby-brick
+  multiplier, jump feel, autopilot behaviour, and the like). Stay concise and design-focused:
+  capture the non-obvious decisions and player-facing behaviour, plus the technical detail a
+  feature genuinely needs to work (e.g. lasers must be a dynamic sensor to register brick
+  contacts). Skip the obvious and the incidental.
 - **One small step at a time, and you drive the reload.** After each edit, reload the game
-  yourself with `webview_reload` and glance at the console for errors before handing back.
-  Make clear early that *you* reload for them — so "try it" means "go play," not "go press
-  reload" (a real user was confused at being told to reload something that had already
-  refreshed). Once they confirm a step does what you both expected, move to the next.
+  yourself with `webview_reload` and glance at the console for errors before handing back, so
+  "try it" always means "go play." State this on turn one (see Start) — don't assume they
+  know; a real user was confused at being told to reload something that had already
+  refreshed. If they'd prefer to reload themselves, hand that off and let "try it" be their
+  cue. Once they confirm a step does what you both expected, move to the next.
 - **Reloading already refreshes the cache.** `webview_reload` clears the HTTP cache by
   default, so a `script.js` edit shows up on reload without touching `index.html`. Only bump
   the cache-buster (`script.js?v=N`) in the rare case a change still doesn't appear — and do
