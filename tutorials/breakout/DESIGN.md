@@ -1,8 +1,8 @@
 # Breakout — Game Design Document
 
 A breakout clone, set up as a starting point for you to build on. The suggested first
-feature is a paddle that can fire laser bolts, but the direction is yours — see TUTORIAL.md
-to get going.
+feature is a paddle that can fire laser bolts, but the direction is yours — just tell the
+assistant what you'd like to build.
 
 ## Core loop
 
@@ -25,9 +25,11 @@ to get going.
 
 ## Status
 
-- [x] Base breakout (from template)
-- [x] Fit-to-window
-- [ ] Your features go here — start with lasers (see TUTORIAL.md), or take it somewhere else.
+The base game already works: the paddle, ball, bricks, and walls, scaled to fit the window.
+Nothing has been built on top of it yet — that part is up to you. As you add features, list
+them here so this design doc and the game stay in step.
+
+- [ ] Your first feature — lasers are the suggested starting point, or take it wherever you like.
 
 ## Ideas to explore
 
